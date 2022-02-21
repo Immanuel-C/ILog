@@ -65,7 +65,7 @@
         printf("\n");
     }
 
-#endif
+#endif // _WIN32
 
 #ifdef __linux__
     #include <string.h>
@@ -104,7 +104,7 @@
     }
 
     // This is windows only so we have to create our own function for this
-    int _vscprintf (const char * format, va_list pargs) { 
+    int _linux_vscprintf (const char * format, va_list pargs) { 
       int retval; 
       va_list argcopy; 
       va_copy(argcopy, pargs); 
@@ -126,9 +126,9 @@
         // I'm not sure why you have to add one to this but I
         // think _vscprintf doesn't count \0 as a character
         // but vsprintf_s needs that \0 
-        size_t msgLen = _vscprintf(fmtBuffer, args) + 1;
+        size_t msgLen = _linux_vscprintf(fmtBuffer, args) + 1;
         
-        char* msgBuffer = new char[msgLen];
+        char* msgBuffer = new char[(unsigned long)msgLen];
         
         // This is different from sprintf becuase it takes in a va_list instead of variable args
         vsprintf(msgBuffer, fmtBuffer, args);

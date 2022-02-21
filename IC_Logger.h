@@ -45,8 +45,8 @@ enum struct ConsoleColour {
 #define IC_LOG_FATAL_ERROR(msg, ...)  _log("Fatal Error", msg, ConsoleColour::FATAL_RED, __VA_ARGS__)
 
 
-// Do not use
+// DO NOT USE
 extern void _platformLog(const char* msg, ConsoleColour colour);
 
-// Do not use
+// DO NOT USE
 extern void _log(const char* prefix, const char* msg, ConsoleColour colour, ...);
