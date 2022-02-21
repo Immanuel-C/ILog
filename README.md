@@ -14,7 +14,8 @@ To format things you can use the regular printf format options. (e.g. %p for poi
 
 I didn't do this myself as clang++ and msvc will complain that vsprintf is depracated.
 
-# Examples
+# IC_Logger on Windows:
+![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example_Windows.PNG)
 
-IC_Logger on Windows:
-![github image]()
+# IC_Logger on Linux:
+![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example_Linux.PNG)
