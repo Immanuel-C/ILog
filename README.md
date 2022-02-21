@@ -10,7 +10,7 @@ To format things you can use the regular printf format options. (e.g. %p for a p
 
 # Compiling with g++
 
-**IMPORTANT:** To compile with g++ on windows you need to change vsprintf_s(msgBuffer, msgLen, fmtBuffer, args); to vsprintf(msgBuffer, fmtBuffer, args); and remove the msgLen param from the function.
+**IMPORTANT:** To compile with g++ on windows you need to change vsprintf_s(msgBuffer, msgLen, fmtBuffer, args); to vsprintf(msgBuffer, fmtBuffer, args);
 
 I didn't do this myself as clang++ and msvc will complain that vsprintf is depracated.
 
