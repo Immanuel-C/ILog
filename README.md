@@ -6,4 +6,7 @@ This repo is under the MIT license, so you can modify this as much as you want a
 
 IC_DEBUG_* is for debug builds only while IC_* is for all builds.
 
-![github image]()
+
+# Examples
+
+![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example.PNG)
