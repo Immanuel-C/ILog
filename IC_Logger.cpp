@@ -1,4 +1,4 @@
-#include "Logger.hpp"
+#include "IC_Logger.h"
 
 void _windowsLog(const char* msg, ConsoleColour colour) {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
