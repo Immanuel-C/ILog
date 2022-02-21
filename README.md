@@ -1,4 +1,4 @@
-# IcLogger
+# Ic Logger
 The IcLogger is for people who need a simple logger. **Currently for windows only.**
 This logger is for C++ only.
 
