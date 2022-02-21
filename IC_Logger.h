@@ -2,10 +2,10 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <stdarg.h>
+
 #ifdef _WIN32
     #include <windows.h>
-#else
-    #error "This logger only supports windows..." 
 #endif // _WIN32
 
 
@@ -43,7 +43,7 @@ enum struct ConsoleColour {
 
 
 // Do not use
-extern void _windowsLog(const char* msg, ConsoleColour colour);
+extern void _platformLog(const char* msg, ConsoleColour colour);
 
 // Do not use
 extern void _log(const char* prefix, const char* msg, ConsoleColour colour, ...);
