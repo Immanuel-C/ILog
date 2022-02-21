@@ -14,6 +14,10 @@ To format things you can use the regular printf format options. (e.g. %p for a p
 
 I didn't do this myself as clang++ and msvc will complain that vsprintf is depracated on windows.
 
+# Issues
+
+If you find any issues please report them in the issues tab
+
 # IC_Logger on Windows:
 ![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example_Windows.PNG)
 
