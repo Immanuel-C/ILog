@@ -16,4 +16,5 @@ I didn't do this myself as clang++ and msvc will complain that vsprintf is depra
 
 # Examples
 
-![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example.PNG)
+IC_Logger on Windows:
+![github image]()
