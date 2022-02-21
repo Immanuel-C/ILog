@@ -1,5 +1,8 @@
 #pragma once
 
+// Github repo link https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/tree/main
+// This library is under the MIT licence 
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdarg.h>
