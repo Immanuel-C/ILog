@@ -6,7 +6,7 @@ This repo is under the MIT license, so you can modify this as much as you want a
 
 IC_DEBUG_* is for debug builds only while IC_* is for all builds.
 
-To format things you can use the regular printf format options. (e.g. %p for a pointer, %ull for unsigned long long, ...). 
+To format things you can use the regular printf format options. (e.g. %p for a pointer, %d for numbers, ...). 
 
 # Compiling with g++
 
