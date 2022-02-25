@@ -72,7 +72,8 @@ void _log(const char* prefix, const char* msg, int colour, ...) {
 
     _platformLog(msgBuffer, colour);
 
-    printf("\n");
+    puts("\n");
+    
+    free(fmtBuffer);
+    free(msgBuffer);
 }
-
-
