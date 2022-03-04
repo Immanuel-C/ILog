@@ -6,25 +6,25 @@
 
 void _platformLog(const char* msg, int colour) {
         switch (colour) {
-            case _IC_COLOUR_WHITE: {
+            case _I_COLOUR_WHITE: {
                 // Check out https://www.tutorialspoint.com/how-to-output-colored-text-to-a-linux-terminal
                 // this is where I found out how this stuff works
                 printf("\033[0;37m%s\033[0m", msg);
                 break;
             }
-            case _IC_COLOUR_GREEN: {
+            case _I_COLOUR_GREEN: {
                 printf("\033[0;32m%s\033[0m", msg);
                 break;
             }
-            case _IC_COLOUR_YELLOW: {
+            case _I_COLOUR_YELLOW: {
                 printf("\033[0;33m%s\033[0m", msg);
                 break;
             }
-            case _IC_COLOUR_RED: {
+            case _I_COLOUR_RED: {
                 printf("\033[0;31m%s\033[0m", msg);
                 break;
             }
-            case _IC_COLOUR_FATAL_RED: {
+            case _I_COLOUR_FATAL_RED: {
                 printf("\033[;41m\033"); // Sets the background to red
                 printf("\033[4;30m%s\033[0m", msg);
                 break;
@@ -53,7 +53,7 @@ void _log(const char* prefix, const char* msg, int colour, ...) {
 
     // returns the length of the formated string
     // I'm not sure why you have to add 1 to this but I
-    // think _vscprintf and _ic_vscprintf doesn't count \0 as a character
+    // think _vscprintf and _i_vscprintf doesn't count \0 as a character
     // but vsprintf_s and vsprintf_s needs that \0 
     size_t msgLen = _i_vscprintf(fmtBuffer, args) + 1;
     
