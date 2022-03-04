@@ -1,4 +1,4 @@
-#include "IC_Logger.h"
+#include "ILog.h"
 
 #ifdef __linux__
     #include <string.h>
@@ -32,7 +32,7 @@ void _platformLog(const char* msg, int colour) {
     };
 }
 
-int _ic_vscprintf (const char * format, va_list pargs) { 
+int _i_vscprintf (const char * format, va_list pargs) { 
     int retval; 
     va_list argcopy; 
     va_copy(argcopy, pargs); 
@@ -55,7 +55,7 @@ void _log(const char* prefix, const char* msg, int colour, ...) {
     // I'm not sure why you have to add 1 to this but I
     // think _vscprintf and _ic_vscprintf doesn't count \0 as a character
     // but vsprintf_s and vsprintf_s needs that \0 
-    size_t msgLen = _ic_vscprintf(fmtBuffer, args) + 1;
+    size_t msgLen = _i_vscprintf(fmtBuffer, args) + 1;
     
     //char* msgBuffer = new char[msgLen];
     char* msgBuffer = (char*)malloc( msgLen * sizeof(char) );
@@ -72,7 +72,7 @@ void _log(const char* prefix, const char* msg, int colour, ...) {
 
     _platformLog(msgBuffer, colour);
 
-    puts("\n");
+    printf("\n");
     
     free(fmtBuffer);
     free(msgBuffer);
