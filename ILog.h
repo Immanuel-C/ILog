@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <signal.h>
 
 #ifdef _WIN32
     #include <windows.h>
@@ -18,6 +19,13 @@
 #define _I_COLOUR_RED 4
 #define _I_COLOUR_FATAL_RED 5
 
+#if defined(_MSC_VER)
+    #define __I_DEBUG_BREAK() __debugbreak();
+#else
+    #define __I_DEBUG_BREAK() raise(SIGTRAP)
+
+#endif
+
 #ifndef NDEBUG
 
 #define I_DEBUG_LOG_TRACE(msg, ...) _log("Debug Trace", msg, _I_COLOUR_GREEN, __VA_ARGS__)
@@ -25,6 +33,26 @@
 #define I_DEBUG_LOG_WARNING(msg, ...)  _log("Debug Warning", msg, _I_COLOUR_YELLOW, __VA_ARGS__)
 #define I_DEBUG_LOG_ERROR(msg, ...)  _log("Debug Error", msg, _I_COLOUR_RED, __VA_ARGS__)
 #define I_DEBUG_LOG_FATAL_ERROR(msg, ...)  _log("Debug Fatal Error", msg, _I_COLOUR_FATAL_RED, __VA_ARGS__)
+
+
+#define I_DEBUG_ASSERT_ERROR(condition, msg, ...)                           \
+{                                                                           \
+    if(!condition)                                                          \
+    {                                                                       \
+        _log("Debug Assert Error", msg, _I_COLOUR_RED, __VA_ARGS__);        \
+    }                                                                       \
+}                                                       
+
+
+#define I_DEBUG_ASSERT_FATAL_ERROR(condition, msg, ...)                     \
+{                                                                           \
+    if(!condition)                                                          \
+    {                                                                       \
+        _log("Debug Assert Fatal Error", msg, _I_COLOUR_RED, __VA_ARGS__);  \
+        __I_DEBUG_BREAK();                                                  \
+    }                                                                       \
+}                                                       
+
 
 #else
 
@@ -41,6 +69,25 @@
 #define I_LOG_WARNING(msg, ...)  _log("Warning", msg, _I_COLOUR_YELLOW, __VA_ARGS__)
 #define I_LOG_ERROR(msg, ...)  _log("Error", msg, _I_COLOUR_RED, __VA_ARGS__)
 #define I_LOG_FATAL_ERROR(msg, ...)  _log("Fatal Error", msg, _I_COLOUR_FATAL_RED, __VA_ARGS__)
+
+#define I_ASSERT_ERROR(condition, msg, ...)                                     \
+{                                                                               \
+        if(!condition)                                                          \
+        {                                                                       \
+            _log("Debug Assert Error", msg, _I_COLOUR_RED, __VA_ARGS__);        \
+        }                                                                       \
+}                                                       
+
+
+#define I_ASSERT_FATAL_ERROR(condition, msg, ...)                               \
+{                                                                               \
+        if(!condition)                                                          \
+        {                                                                       \
+            _log("Debug Assert Fatal Error", msg, _I_COLOUR_RED, __VA_ARGS__);  \
+            __I_DEBUG_BREAK();                                                  \
+        }                                                                       \
+}
+
 
 
 // DO NOT USE
