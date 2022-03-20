@@ -14,8 +14,5 @@ To format things you can use the regular printf format options. (e.g. %p for a p
 
 If you find any issues please report them in the issues tab
 
-# ILog on Windows:
-![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example_Windows.PNG)
-
-# ILog on Linux (WSL Ubuntu):
-![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example_Linux.PNG)
+# ILog Example:
+![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example_ILog.PNG)
