@@ -13,8 +13,8 @@ int main() {
     I_LOG_ERROR("Some Error Happened %zu", 10);
     I_LOG_FATAL_ERROR("Some Fatal Error Happened %s %ull %d", "Error", 50ULL, 600);
 
-    I_DEBUG_ASSERT_ERROR(0, "Assert Error");
-    I_DEBUG_ASSERT_FATAL_ERROR(0, "Assert Error");
+    I_ASSERT_ERROR(0, "Assert Error");
+    I_ASSERT_FATAL_ERROR(0, "Assert Error");
 
     return 0;
 }

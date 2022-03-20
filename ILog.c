@@ -41,11 +41,11 @@ int _i_vscprintf (const char * format, va_list pargs) {
     return retval; 
 }   
 
-void _log(const char* prefix, const char* msg, int colour, ...) {
+void _i_log(const char* prefix, const char* msg, int colour, ...) {
     //char* fmtBuffer = new char[ strlen(prefix) + strlen(msg) ];
     char* fmtBuffer = (char*)malloc( strlen(prefix) * sizeof(char) + strlen(msg) * sizeof(char) );
     // Copy formated string into the fmtBuffer
-    sprintf(fmtBuffer, "%s: %s", prefix, msg);
+    sprintf(fmtBuffer, "%s %s", prefix, msg);
 
     va_list args;
 

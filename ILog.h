@@ -28,30 +28,39 @@
 
 #ifndef NDEBUG
 
-#define I_DEBUG_LOG_TRACE(msg, ...) _log("Debug Trace", msg, _I_COLOUR_GREEN, __VA_ARGS__)
-#define I_DEBUG_LOG_INFO(msg, ...)  _log("Debug Info", msg, _I_COLOUR_WHITE, __VA_ARGS__)
-#define I_DEBUG_LOG_WARNING(msg, ...)  _log("Debug Warning", msg, _I_COLOUR_YELLOW, __VA_ARGS__)
-#define I_DEBUG_LOG_ERROR(msg, ...)  _log("Debug Error", msg, _I_COLOUR_RED, __VA_ARGS__)
-#define I_DEBUG_LOG_FATAL_ERROR(msg, ...)  _log("Debug Fatal Error", msg, _I_COLOUR_FATAL_RED, __VA_ARGS__)
+#define I_DEBUG_LOG_TRACE(msg, ...) _i_log("Debug Trace:", msg, _I_COLOUR_GREEN, __VA_ARGS__)
+#define I_DEBUG_LOG_INFO(msg, ...)  _i_log("Debug Info:", msg, _I_COLOUR_WHITE, __VA_ARGS__)
+#define I_DEBUG_LOG_WARNING(msg, ...)  _i_log("Debug Warning:", msg, _I_COLOUR_YELLOW, __VA_ARGS__)
+#define I_DEBUG_LOG_ERROR(msg, ...)  _i_log("Debug Error:", msg, _I_COLOUR_RED, __VA_ARGS__)
+#define I_DEBUG_LOG_FATAL_ERROR(msg, ...)  _i_log("Debug Fatal Error:", msg, _I_COLOUR_FATAL_RED, __VA_ARGS__)
+
+#define I_DEBUG_ASSERT_ERROR(condition, msg, ...)                                                                                                                                   \
+{                                                                                                                                                                                   \
+        if(!condition)                                                                                                                                                              \
+        {                                                                                                                                                                           \
+            const char* prefixMsg = "Debug Assert Error On Line: %u\nIn File: %s\n";                                                                                                \
+            char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                   \
+            sprintf(buf, prefixMsg, (unsigned int)(__LINE__), __FILE__);                                                                                                            \
+            _i_log(buf, msg, _I_COLOUR_RED, __VA_ARGS__);                                                                                                                           \
+            free(buf);                                                                                                                                                              \
+            __I_DEBUG_BREAK();                                                                                                                                                      \
+        }                                                                                                                                                                           \
+}
 
 
-#define I_DEBUG_ASSERT_ERROR(condition, msg, ...)                           \
-{                                                                           \
-    if(!condition)                                                          \
-    {                                                                       \
-        _log("Debug Assert Error", msg, _I_COLOUR_RED, __VA_ARGS__);        \
-    }                                                                       \
-}                                                       
-
-
-#define I_DEBUG_ASSERT_FATAL_ERROR(condition, msg, ...)                     \
-{                                                                           \
-    if(!condition)                                                          \
-    {                                                                       \
-        _log("Debug Assert Fatal Error", msg, _I_COLOUR_RED, __VA_ARGS__);  \
-        __I_DEBUG_BREAK();                                                  \
-    }                                                                       \
-}                                                       
+#define I_DEBUG_ASSERT_FATAL_ERROR(condition, msg, ...)                                                                                                                             \
+{                                                                                                                                                                                   \
+        if(!condition)                                                                                                                                                              \
+        {                                                                                                                                                                           \
+            const char* prefixMsg = "Debug Assert Fatal Error On Line: %u\nIn File: %s\n";                                                                                          \
+            char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                         \
+            sprintf(buf, prefixMsg, (unsigned int)(__LINE__), __FILE__);                                                                                                            \
+            _i_log(buf, msg, _I_COLOUR_FATAL_RED, __VA_ARGS__);                                                                                                                     \
+            free(buf);                                                                                                                                                              \
+            __I_DEBUG_BREAK();                                                                                                                                                      \
+        }                                                                                                                                                                           \
+}
+                                                    
 
 
 #else
@@ -64,28 +73,37 @@
 
 #endif
 
-#define I_LOG_TRACE(msg, ...) _log("Trace", msg, _I_COLOUR_GREEN, __VA_ARGS__)
-#define I_LOG_INFO(msg, ...)  _log("Info", msg, _I_COLOUR_WHITE, __VA_ARGS__)
-#define I_LOG_WARNING(msg, ...)  _log("Warning", msg, _I_COLOUR_YELLOW, __VA_ARGS__)
-#define I_LOG_ERROR(msg, ...)  _log("Error", msg, _I_COLOUR_RED, __VA_ARGS__)
-#define I_LOG_FATAL_ERROR(msg, ...)  _log("Fatal Error", msg, _I_COLOUR_FATAL_RED, __VA_ARGS__)
+#define I_LOG_TRACE(msg, ...) _i_log("Trace:", msg, _I_COLOUR_GREEN, __VA_ARGS__)
+#define I_LOG_INFO(msg, ...)  _i_log("Info:", msg, _I_COLOUR_WHITE, __VA_ARGS__)
+#define I_LOG_WARNING(msg, ...)  _i_log("Warning:", msg, _I_COLOUR_YELLOW, __VA_ARGS__)
+#define I_LOG_ERROR(msg, ...)  _i_log("Error:", msg, _I_COLOUR_RED, __VA_ARGS__)
+#define I_LOG_FATAL_ERROR(msg, ...)  _i_log("Fatal Error:", msg, _I_COLOUR_FATAL_RED, __VA_ARGS__)
 
-#define I_ASSERT_ERROR(condition, msg, ...)                                     \
-{                                                                               \
-        if(!condition)                                                          \
-        {                                                                       \
-            _log("Debug Assert Error", msg, _I_COLOUR_RED, __VA_ARGS__);        \
-        }                                                                       \
+#define I_ASSERT_ERROR(condition, msg, ...)                                                                                                                                         \
+{                                                                                                                                                                                   \
+        if(!condition)                                                                                                                                                              \
+        {                                                                                                                                                                           \
+            const char* prefixMsg = "Assert Error On Line: %u\nIn File: %s\n";                                                                                                      \
+            char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                   \
+            sprintf(buf, prefixMsg, (unsigned int)(__LINE__), __FILE__);                                                                                                            \
+            _i_log(buf, msg, _I_COLOUR_RED, __VA_ARGS__);                                                                                                                           \
+            free(buf);                                                                                                                                                              \
+            __I_DEBUG_BREAK();                                                                                                                                                      \
+        }                                                                                                                                                                           \
 }                                                       
 
 
-#define I_ASSERT_FATAL_ERROR(condition, msg, ...)                               \
-{                                                                               \
-        if(!condition)                                                          \
-        {                                                                       \
-            _log("Debug Assert Fatal Error", msg, _I_COLOUR_RED, __VA_ARGS__);  \
-            __I_DEBUG_BREAK();                                                  \
-        }                                                                       \
+#define I_ASSERT_FATAL_ERROR(condition, msg, ...)                                                                                                                                   \
+{                                                                                                                                                                                   \
+        if(!condition)                                                                                                                                                              \
+        {                                                                                                                                                                           \
+            const char* prefixMsg = "Assert Fatal Error On Line: %u\nIn File: %s\n";                                                                                                \
+            char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                         \
+            sprintf(buf, prefixMsg, (unsigned int)(__LINE__), __FILE__);                                                                                                            \
+            _i_log(buf, msg, _I_COLOUR_FATAL_RED, __VA_ARGS__);                                                                                                                     \
+            free(buf);                                                                                                                                                              \
+            __I_DEBUG_BREAK();                                                                                                                                                      \
+        }                                                                                                                                                                           \
 }
 
 
@@ -94,4 +112,4 @@
 extern void _platformLog(const char* msg, int colour);
 
 // DO NOT USE
-extern void _log(const char* prefix, const char* msg, int colour, ...);
+extern void _i_log(const char* prefix, const char* msg, int colour, ...);
