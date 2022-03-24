@@ -36,7 +36,7 @@
 
 #define I_DEBUG_ASSERT_ERROR(condition, msg, ...)                                                                                                                                   \
 {                                                                                                                                                                                   \
-        if(!condition)                                                                                                                                                              \
+        if(condition)                                                                                                                                                              \
         {                                                                                                                                                                           \
             const char* prefixMsg = "Debug Assert Error On Line: %u\nIn File: %s\n";                                                                                                \
             char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                   \
@@ -50,7 +50,7 @@
 
 #define I_DEBUG_ASSERT_FATAL_ERROR(condition, msg, ...)                                                                                                                             \
 {                                                                                                                                                                                   \
-        if(!condition)                                                                                                                                                              \
+        if(condition)                                                                                                                                                              \
         {                                                                                                                                                                           \
             const char* prefixMsg = "Debug Assert Fatal Error On Line: %u\nIn File: %s\n";                                                                                          \
             char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                         \
@@ -81,7 +81,7 @@
 
 #define I_ASSERT_ERROR(condition, msg, ...)                                                                                                                                         \
 {                                                                                                                                                                                   \
-        if(!condition)                                                                                                                                                              \
+        if(condition)                                                                                                                                                              \
         {                                                                                                                                                                           \
             const char* prefixMsg = "Assert Error On Line: %u\nIn File: %s\n";                                                                                                      \
             char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                   \
@@ -95,7 +95,7 @@
 
 #define I_ASSERT_FATAL_ERROR(condition, msg, ...)                                                                                                                                   \
 {                                                                                                                                                                                   \
-        if(!condition)                                                                                                                                                              \
+        if(condition)                                                                                                                                                              \
         {                                                                                                                                                                           \
             const char* prefixMsg = "Assert Fatal Error On Line: %u\nIn File: %s\n";                                                                                                \
             char* buf = (char*)malloc(strlen(prefixMsg) * sizeof(char) + strlen(__FILE__) * sizeof(char) + sizeof(unsigned int));                                                         \
