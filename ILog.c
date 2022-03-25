@@ -43,9 +43,9 @@ int _i_vscprintf (const char * format, va_list pargs) {
 
 void _i_log(const char* prefix, const char* msg, int colour, ...) {
     //char* fmtBuffer = new char[ strlen(prefix) + strlen(msg) ];
-    char* fmtBuffer = (char*)malloc( strlen(prefix) * sizeof(char) + strlen(msg) * sizeof(char) );
+    char* fmtBuffer = (char*)malloc( (strlen(prefix) + 1) * sizeof(char) + (strlen(msg) + 1) * sizeof(char) );
     // Copy formated string into the fmtBuffer
-    sprintf(fmtBuffer, "%s %s", prefix, msg);
+    sprintf(fmtBuffer, "%s%s", prefix, msg);
 
     va_list args;
 
@@ -58,7 +58,7 @@ void _i_log(const char* prefix, const char* msg, int colour, ...) {
     size_t msgLen = _i_vscprintf(fmtBuffer, args) + 1;
     
     //char* msgBuffer = new char[msgLen];
-    char* msgBuffer = (char*)malloc( msgLen * sizeof(char) );
+    char* msgBuffer = (char*)malloc( (msgLen + 1) * sizeof(char) );
     
     // This is different from sprintf becuase it takes in a va_list instead of variable args
     #if defined(_WIN32) && defined(_MSVC_VER) || defined(_WIN32) && defined(__clang__)
