@@ -1,4 +1,9 @@
-#pragma once
+#if !defined(ILOG_H)
+#define ILOG_H
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
 
 // Github repo link https://github.com/Immanuel-C/ILog
 // This library is under the MIT licence 
@@ -229,3 +234,9 @@ extern void _platformLog(FILE* stream, const char* msg, int colour);
 extern void _i_log(FILE* stream, const char* prefix, const char* msg, int colour, ...);
 // DO NOT USE
 extern void _f_i_log(const char* fileName, const char* msg, const char* mode, ...);
+
+#endif
+
+#if defined(__cplusplus)
+}
+#endif

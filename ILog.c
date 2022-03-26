@@ -1,5 +1,9 @@
 #include "ILog.h"
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #define FILE_OPEN_SUCCESS 0
 
 #ifdef __linux__
@@ -128,3 +132,8 @@ void _f_i_log(const char* fileName, const char* msg, const char* mode, ...) {
 
     fclose(fStream);
 }
+
+
+#if defined(__cplusplus)
+}
+#endif
