@@ -10,7 +10,7 @@ To format things you can use the regular printf format options. (e.g. %p for a p
 
 # Issues
 
-- currently ILog is having issues with gcc/g++ on windows, it works just fine on linux though. 
+No currently known issues
 
 If you find any issues please report them in the issues tab
 
