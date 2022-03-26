@@ -8,6 +8,8 @@ IC_DEBUG_* is for debug builds only while IC_* is for all builds.
 
 To format things you can use the regular printf format options. (e.g. %p for a pointer, %d for numbers, etc.). 
 
+ILog can also print to a specific file stream or create a new file and dump the text data into it
+
 # Issues
 
 No currently known issues
