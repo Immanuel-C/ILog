@@ -108,9 +108,16 @@ void _f_i_log(const char* fileName, const char* msg, const char* mode, ...) {
 
     FILE* fStream;    
 
-    if (fopen_s(&fStream, fileName, mode) != FILE_OPEN_SUCCESS) {
-        fprintf(stderr, "ILog Internal Error: Failed to open file: %s", fileName);
-    }
+    #if defined(_MSC_VER)
+        if (fopen_s(&fStream, fileName, mode) != FILE_OPEN_SUCCESS) {
+            fprintf(stderr, "ILog Internal Error: Failed to open file: %s", fileName);
+        }
+    #else
+        fStream = fopen(fileName, mode);
+        if (!fStream) {
+            fprintf(stderr, "ILog Internal Error: Failed to open file: %s", fileName);
+        }
+    #endif
 
     _platformLog(fStream, msgBuffer, 0);
 

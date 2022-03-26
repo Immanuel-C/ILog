@@ -4,9 +4,15 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Windows Build",
+            "label": "CLANG Windows Build",
             "type": "shell",
-            "command": "clang ${workspaceFolder}/example.c ${workspaceFolder}/ILog.c -I${workspaceFolder}/ILog.h"
+            "command": "clang ${workspaceFolder}/example.c ${workspaceFolder}/ILog.c"
+        },
+        
+        {
+            "label": "GCC Windows Build",
+            "type": "shell",
+            "command": "gcc ${workspaceFolder}/example.c ${workspaceFolder}/ILog.c"
         }
     ]
 }
