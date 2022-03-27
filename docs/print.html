@@ -138,7 +138,6 @@
                         <h1 id="what-is-ilog"><a class="header" href="#what-is-ilog">What is ILog?</a></h1>
 <p>ILog is a library that makes logging and assertion quick and easy.
 ILog is a simple library that is beginner friendly.</p>
-<p>Also note that if your compiler doesn't automatically define <code>NDEBUG</code> when compiling with optomization on, please define this as ILog depeneds on this define to know when you are not compiling in debug mode. </p>
 <p>Code example:</p>
 <pre><code class="language-c">#include &lt;ILog.h&gt;
 
@@ -153,7 +152,9 @@ int main()
 </code></pre>
 <p>Console output:</p>
 <p><img src="images/frontPageExample.png" alt="Example Output" /></p>
+<h1 id="important-stuff-you-should-know-about"><a class="header" href="#important-stuff-you-should-know-about">Important Stuff You Should Know About</a></h1>
 <p>Note that the color of the output maybe different because of the theme of your terminal and other factors!</p>
+<p>Also note that if your compiler doesn't automatically define <code>NDEBUG</code> when compiling with optomization on, please define this as ILog depeneds on this define to know when you are not compiling in debug mode. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="loging-in-ilog"><a class="header" href="#loging-in-ilog">Loging in ILog</a></h1>
 <p>ILog's main purpose is to make loging with colours easy and simple.
 ILog also has loging levels like the error level, the warning level, etc. These do nothing other than make your text a certain colour and have a specific prefix for each level (e.g &quot;Error&quot; for the error level), but it can be useful to quickly figure out if a message is an error or something else. ILog also has a logging levels for debug and optimized modes. </p>
