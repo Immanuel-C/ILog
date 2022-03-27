@@ -136,7 +136,7 @@
                     <main>
                         <h1 id="assertions-in-ilog"><a class="header" href="#assertions-in-ilog">Assertions In ILog</a></h1>
 <p>ILog asserts have two levels fatal error and error. 
-If an assertion fails it will trigger a debug breakpoint (for debug mode) and <code>getchar()</code> in optomized buids if you are on windows and using the MSVC or Clang + MSVC standard library. If you aren't then it will call the <code>getchar();</code> function on debug and release modes.</p>
+If an assertion fails it will trigger a debug breakpoint (for debug mode) and <code>getchar()</code> in optomized buids if you are on windows and using the MSVC or Clang + MSVC standard library. If you aren't then it will call the <code>getchar();</code> function on debug and optomized modes.</p>
 <p>An ILog assert takes in two or more arguments a condition, a message and variable arguments (for formating the message). The message will be printed with the file name and the line the assertion took place on if the assertion fails. The assertion works like an if statment if the statment is true then it the assertion fails, if not then it just continuous.</p>
 <p>Code example:</p>
 <pre><code class="language-c">#include &lt;ILog.h&gt;
