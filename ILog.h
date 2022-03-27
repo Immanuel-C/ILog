@@ -234,8 +234,8 @@ extern void _i_log(FILE* stream, const char* prefix, const char* msg, int colour
 // DO NOT USE
 extern void _f_i_log(const char* fileName, const char* msg, const char* mode, ...);
 
-#endif
-
 #if defined(__cplusplus)
 }
+#endif
+
 #endif
