@@ -24,11 +24,10 @@ extern "C" {
 #define _I_COLOUR_RED 4
 #define _I_COLOUR_FATAL_RED 5
 
-#if defined(_MSC_VER)
-    #define __I_DEBUG_BREAK() __debugbreak();
+#if defined(_MSC_VER) && !defined(NDEBUG)
+    #define __I_DEBUG_BREAK() __debugbreak()
 #else
-    #define __I_DEBUG_BREAK() raise(SIGTRAP)
-
+    #define __I_DEBUG_BREAK() getchar()
 #endif
 
 #if defined(_MSC_VER)
@@ -42,7 +41,7 @@ extern "C" {
 #define I_DEBUG_LOG_FATAL_ERROR(msg, ...)  _i_log(stderr, "Debug Fatal Error: ", msg, _I_COLOUR_FATAL_RED, __VA_ARGS__)
 
 #define I_DEBUG_FILE_LOG(fileName, msg, mode, ...) _f_i_log(fileName, msg, mode, __VA_ARGS__)
-#define I_DEBUG_FS_LOG(stream, msg, ...) i_log(stream, msg, __VA_ARGS__)
+#define I_DEBUG_FS_LOG(stream, msg, ...) _i_log(stream, "", msg, 0, ##__VA_ARGS__)
 
 #define I_DEBUG_ASSERT_ERROR(condition, msg, ...)                                                                                                                                   \
 {                                                                                                                                                                                   \
@@ -97,7 +96,7 @@ extern "C" {
 #define I_LOG_FATAL_ERROR(msg, ...)  _i_log(stderr, "Fatal Error: ", msg, _I_COLOUR_FATAL_RED,  __VA_ARGS__)
 
 #define I_FILE_LOG(fileName, msg, mode, ...) _f_i_log(fileName, msg, mode, __VA_ARGS__)
-#define I_FS_LOG(stream, msg, ...) i_log(stream, msg, __VA_ARGS__)
+#define I_FS_LOG(stream, msg, ...) _i_log(stream, "", msg, 0, __VA_ARGS__)
 
 
 #define I_ASSERT_ERROR(condition, msg, ...)                                                                                                                                         \
@@ -138,7 +137,7 @@ extern "C" {
 #define I_DEBUG_LOG_FATAL_ERROR(msg, ...)  _i_log(stderr, "Debug Fatal Error: ", msg, _I_COLOUR_FATAL_RED, ##__VA_ARGS__)
 
 #define I_DEBUG_FILE_LOG(fileName, msg, mode, ...) _f_i_log(fileName, msg, mode, ##__VA_ARGS__)
-#define I_DEBUG_FS_LOG(stream, msg, ...) i_log(stream, msg, ##__VA_ARGS__)
+#define I_DEBUG_FS_LOG(stream, msg, ...) _i_log(stream, "", msg, 0, ##__VA_ARGS__)
 
 #define I_DEBUG_ASSERT_ERROR(condition, msg, ...)                                                                                                                                   \
 {                                                                                                                                                                                   \
@@ -193,7 +192,7 @@ extern "C" {
 #define I_LOG_FATAL_ERROR(msg, ...)  _i_log(stderr, "Fatal Error: ", msg, _I_COLOUR_FATAL_RED, ##__VA_ARGS__)
 
 #define I_FILE_LOG(fileName, msg, mode, ...) _f_i_log(fileName, msg, mode, ##__VA_ARGS__)
-#define I_FS_LOG(stream, msg, ...) i_log(stream, msg, ##__VA_ARGS__)
+#define I_FS_LOG(stream, msg, ...) _i_log(stream, "", msg, 0, ##__VA_ARGS__)
 
 
 #define I_ASSERT_ERROR(condition, msg, ...)                                                                                                                                         \

@@ -99,32 +99,27 @@ void _f_i_log(const char* fileName, const char* msg, const char* mode, ...) {
     //char* msgBuffer = new char[msgLen];
     char* msgBuffer = (char*)malloc( (msgLen + 1) * sizeof(char) );
 
+    FILE* fStream;    
     
     // This is different from sprintf becuase it takes in a va_list instead of variable args
     #if defined(_MSVC_VER) || defined(_WIN32) && defined(__clang__)
         vsprintf_s(msgBuffer, msgLen, msg, args);
-    #else
-        // MSVC complains about this function being depracted
-        vsprintf(msgBuffer, msg, args);
-    #endif 
-
-    va_end(args);
-
-    FILE* fStream;    
-
-    #if defined(_MSC_VER)
         if (fopen_s(&fStream, fileName, mode) != FILE_OPEN_SUCCESS) {
             fprintf(stderr, "ILog Internal Error: Failed to open file: %s", fileName);
         }
     #else
+        // MSVC complains about this function being depracted
+        vsprintf(msgBuffer, msg, args);
+
         fStream = fopen(fileName, mode);
         if (!fStream) {
             fprintf(stderr, "ILog Internal Error: Failed to open file: %s", fileName);
         }
-    #endif
+    #endif 
+
+    va_end(args);
 
     _platformLog(fStream, msgBuffer, 0);
-
 
     fprintf(fStream, "\n");
     
