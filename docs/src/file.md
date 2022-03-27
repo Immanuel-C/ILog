@@ -31,3 +31,5 @@ int main()
 Output:
 
 ![example.log](images/fileLogingExample.png)
+
+**The file macros do not have debug equivlilents.**

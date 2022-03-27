@@ -59,4 +59,3 @@ Output:
 
 ![Loging Output](images/logPageDebugExample.png)
 
-**The file macros do not have debug equivlilents.**
