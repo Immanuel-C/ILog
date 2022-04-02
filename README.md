@@ -4,7 +4,7 @@ This logger is for C/C++.
 
 This repo is under the MIT license, so you can modify this as much as you want and repost the code.
 
-[Docs](https://immanuel-c.github.io/ILog/)
+[ILog Docs](https://immanuel-c.github.io/ILog/)
 
 # Issues
 
