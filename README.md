@@ -14,3 +14,7 @@ If you find any issues please report them in the issues tab
 
 # ILog Example:
 ![github image](https://github.com/Imaaaaaaaaaaaaaaan/IcLogger/blob/main/Example_ILog.PNG)
+
+# Building ILog into a DLL
+
+define `ILOG_BUILD_DLL` in your ILog project.
