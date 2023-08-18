@@ -8,11 +8,14 @@ extern "C" {
 // Github repo link https://github.com/Immanuel-C/ILog
 // This library is under the MIT licence 
 
+#include "ILogCore.h"
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <signal.h>
+
 
 #ifdef _WIN32
     #include <windows.h>
@@ -227,12 +230,11 @@ extern "C" {
 
 
 // DO NOT USE
-extern void _platformLog(FILE* stream, const char* msg, int colour);
-
+ILOG_API void _platformLog(FILE* stream, const char* msg, int colour);
 // DO NOT USE
-extern void _i_log(FILE* stream, const char* prefix, const char* msg, int colour, ...);
+ILOG_API void _i_log(FILE* stream, const char* prefix, const char* msg, int colour, ...);
 // DO NOT USE
-extern void _f_i_log(const char* fileName, const char* msg, const char* mode, ...);
+ILOG_API void _f_i_log(const char* fileName, const char* msg, const char* mode, ...);
 
 #if defined(__cplusplus)
 }
