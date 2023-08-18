@@ -17,4 +17,4 @@ If you find any issues please report them in the issues tab
 
 # Building ILog into a DLL
 
-define `ILOG_BUILD_DLL` in your ILog project.
+define `ILOG_BUILD_DLL` in your preprocessor defines. Also define `ILOG_DLL` in preprocessor defines and the client applications preprocessor defines.
